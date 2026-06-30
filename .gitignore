@@ -17,3 +17,6 @@ frontend/.env
 
 # Logs
 *.log
+**/__pycache__/
+**/*.pyc
+**/*.pyo
