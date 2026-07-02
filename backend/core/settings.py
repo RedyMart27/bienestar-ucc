@@ -168,3 +168,6 @@ CORS_ALLOWED_ORIGINS = [
 # Archivos de medios (imágenes de actividades)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# modelo de usuario personalizado
+AUTH_USER_MODEL = 'usuarios.Usuario'
