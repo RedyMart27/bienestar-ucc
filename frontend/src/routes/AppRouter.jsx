@@ -6,7 +6,10 @@ import {
 } from "react-router-dom";
 
 import Login from "../pages/auth/Login";
-import Dashboard from "../pages/auth/Dashboard";
+
+import DashboardEstudiante from "../pages/estudiante/Dashboard";
+import DashboardAdmin from "../pages/admin/Dashboard";
+import DashboardSuperAdmin from "../pages/superadmin/Dashboard";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -15,7 +18,7 @@ function AppRouter() {
     <BrowserRouter>
       <Routes>
 
-        {/* Redirección inicial */}
+        {/* Ruta inicial */}
         <Route
           path="/"
           element={<Navigate to="/login" replace />}
@@ -27,38 +30,32 @@ function AppRouter() {
           element={<Login />}
         />
 
-        {/* Dashboard Estudiante */}
+        {/* Estudiante */}
         <Route
           path="/estudiante"
           element={
-            <ProtectedRoute
-              allowedRoles={["estudiante"]}
-            >
-              <Dashboard />
+            <ProtectedRoute allowedRoles={["estudiante"]}>
+              <DashboardEstudiante />
             </ProtectedRoute>
           }
         />
 
-        {/* Dashboard Administrativo */}
+        {/* Administrativo */}
         <Route
           path="/admin"
           element={
-            <ProtectedRoute
-              allowedRoles={["administrativo"]}
-            >
-              <Dashboard />
+            <ProtectedRoute allowedRoles={["administrativo"]}>
+              <DashboardAdmin />
             </ProtectedRoute>
           }
         />
 
-        {/* Dashboard Super Admin */}
+        {/* Super Admin */}
         <Route
           path="/superadmin"
           element={
-            <ProtectedRoute
-              allowedRoles={["superadmin"]}
-            >
-              <Dashboard />
+            <ProtectedRoute allowedRoles={["superadmin"]}>
+              <DashboardSuperAdmin />
             </ProtectedRoute>
           }
         />
