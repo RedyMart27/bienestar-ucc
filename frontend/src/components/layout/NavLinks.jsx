@@ -6,8 +6,9 @@ function NavLinks() {
 
   const estudiante = [
     { name: "Inicio", path: "/estudiante" },
-    { name: "Actividades", path: "/estudiante" },
-    { name: "Perfil", path: "/estudiante" },
+    { name: "Actividades", path: "/estudiante/actividades" },
+    { name: "Informativo", path: "/estudiante/informativo" },
+    { name: "Mis Horas", path: "/estudiante/mis-horas" },
   ];
 
   const administrativo = [
@@ -42,22 +43,24 @@ function NavLinks() {
   }
 
   return (
-    <nav className="flex items-center gap-8">
+    <nav className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-8">
 
       {links.map((link) => (
+
         <NavLink
           key={link.name}
           to={link.path}
           className={({ isActive }) =>
             `font-medium transition ${
               isActive
-                ? "text-cyan-600"
+                ? "text-cyan-600 border-b-2 border-cyan-600 pb-1"
                 : "text-slate-600 hover:text-cyan-600"
             }`
           }
         >
           {link.name}
         </NavLink>
+
       ))}
 
     </nav>

@@ -4,9 +4,11 @@ function Layout({ children }) {
   return (
     <div className="min-h-screen bg-slate-100">
 
+      {/* Barra de navegación */}
       <Navbar />
 
-      <main className="max-w-7xl mx-auto p-8">
+      {/* Contenido principal */}
+      <main className="max-w-7xl mx-auto px-6 py-10">
         {children}
       </main>
 
