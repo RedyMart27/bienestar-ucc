@@ -7,18 +7,24 @@ import {
 
 import Login from "../pages/auth/Login";
 
-// Estudiante
+// ===================== ESTUDIANTE =====================
+
 import DashboardEstudiante from "../pages/estudiante/Dashboard";
 import Actividades from "../pages/estudiante/Actividades";
 import ActividadDetalle from "../pages/estudiante/ActividadDetalle";
+import Programas from "../pages/estudiante/Programas";
+import ProgramaDetalle from "../pages/estudiante/ProgramaDetalle";
 import Informativo from "../pages/estudiante/Informativo";
 import NoticiaDetalle from "../pages/estudiante/NoticiaDetalle";
 import MisHoras from "../pages/estudiante/MisHoras";
 
-// Administrativo
-import DashboardAdmin from "../pages/admin/Dashboard";
+// ===================== ADMINISTRATIVO =====================
 
-// Superadministrador
+import DashboardAdmin from "../pages/admin/Dashboard";
+import ProgramasAdmin from "../pages/admin/Programas";
+
+// ===================== SUPERADMIN =====================
+
 import DashboardSuperAdmin from "../pages/superadmin/Dashboard";
 
 import ProtectedRoute from "./ProtectedRoute";
@@ -42,7 +48,6 @@ function AppRouter() {
 
         {/* ===================== ESTUDIANTE ===================== */}
 
-        {/* Dashboard */}
         <Route
           path="/estudiante"
           element={
@@ -52,7 +57,24 @@ function AppRouter() {
           }
         />
 
-        {/* Actividades */}
+        <Route
+          path="/estudiante/programas"
+          element={
+            <ProtectedRoute allowedRoles={["estudiante"]}>
+              <Programas />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/estudiante/programas/:id"
+          element={
+            <ProtectedRoute allowedRoles={["estudiante"]}>
+              <ProgramaDetalle />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/estudiante/actividades"
           element={
@@ -62,7 +84,6 @@ function AppRouter() {
           }
         />
 
-        {/* Detalle Actividad */}
         <Route
           path="/estudiante/actividades/:id"
           element={
@@ -72,17 +93,6 @@ function AppRouter() {
           }
         />
 
-        {/* Mis Horas */}
-        <Route
-          path="/estudiante/mis-horas"
-          element={
-            <ProtectedRoute allowedRoles={["estudiante"]}>
-              <MisHoras />
-            </ProtectedRoute>
-          }
-        />
-
-        {/* Informativo */}
         <Route
           path="/estudiante/informativo"
           element={
@@ -92,12 +102,20 @@ function AppRouter() {
           }
         />
 
-        {/* Detalle Noticia */}
         <Route
           path="/estudiante/informativo/:id"
           element={
             <ProtectedRoute allowedRoles={["estudiante"]}>
               <NoticiaDetalle />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/estudiante/mis-horas"
+          element={
+            <ProtectedRoute allowedRoles={["estudiante"]}>
+              <MisHoras />
             </ProtectedRoute>
           }
         />
@@ -109,6 +127,15 @@ function AppRouter() {
           element={
             <ProtectedRoute allowedRoles={["administrativo"]}>
               <DashboardAdmin />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/programas"
+          element={
+            <ProtectedRoute allowedRoles={["administrativo"]}>
+              <ProgramasAdmin />
             </ProtectedRoute>
           }
         />
@@ -125,6 +152,7 @@ function AppRouter() {
         />
 
         {/* Ruta inexistente */}
+
         <Route
           path="*"
           element={<Navigate to="/login" replace />}

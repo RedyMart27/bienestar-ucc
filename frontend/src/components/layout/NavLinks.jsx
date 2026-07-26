@@ -5,22 +5,60 @@ function NavLinks() {
   const { user } = useAuth();
 
   const estudiante = [
-    { name: "Inicio", path: "/estudiante" },
-    { name: "Actividades", path: "/estudiante/actividades" },
-    { name: "Informativo", path: "/estudiante/informativo" },
-    { name: "Mis Horas", path: "/estudiante/mis-horas" },
+    {
+      name: "Inicio",
+      path: "/estudiante",
+    },
+    {
+      name: "Programas",
+      path: "/estudiante/programas",
+    },
+    {
+      name: "Actividades",
+      path: "/estudiante/actividades",
+    },
+    {
+      name: "Informativo",
+      path: "/estudiante/informativo",
+    },
+    {
+      name: "Mis Horas",
+      path: "/estudiante/mis-horas",
+    },
   ];
 
   const administrativo = [
-    { name: "Dashboard", path: "/admin" },
-    { name: "Actividades", path: "/admin" },
-    { name: "Usuarios", path: "/admin" },
+    {
+      name: "Dashboard",
+      path: "/admin",
+    },
+    {
+      name: "Programas",
+      path: "/admin/programas",
+    },
+    {
+      name: "Actividades",
+      path: "/admin",
+    },
+    {
+      name: "Usuarios",
+      path: "/admin",
+    },
   ];
 
   const superadmin = [
-    { name: "Dashboard", path: "/superadmin" },
-    { name: "Usuarios", path: "/superadmin" },
-    { name: "Configuración", path: "/superadmin" },
+    {
+      name: "Dashboard",
+      path: "/superadmin",
+    },
+    {
+      name: "Usuarios",
+      path: "/superadmin",
+    },
+    {
+      name: "Configuración",
+      path: "/superadmin",
+    },
   ];
 
   let links = [];
@@ -44,9 +82,7 @@ function NavLinks() {
 
   return (
     <nav className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-8">
-
       {links.map((link) => (
-
         <NavLink
           key={link.name}
           to={link.path}
@@ -60,9 +96,7 @@ function NavLinks() {
         >
           {link.name}
         </NavLink>
-
       ))}
-
     </nav>
   );
 }

@@ -31,7 +31,7 @@ function LoginForm({ current }) {
     setLoading(true);
 
     try {
-      const response = await api.post("login/", {
+      const response = await api.post("/auth/login/", {
         username,
         password,
       });
@@ -59,8 +59,12 @@ function LoginForm({ current }) {
           navigate("/login", { replace: true });
       }
     } catch (err) {
+      console.error(err);
+
       if (err.response?.data?.error) {
         setError(err.response.data.error);
+      } else if (err.response?.data?.detail) {
+        setError(err.response.data.detail);
       } else {
         setError("No fue posible iniciar sesión.");
       }
@@ -71,7 +75,6 @@ function LoginForm({ current }) {
 
   return (
     <div className="mt-10">
-
       <Input
         label="Usuario"
         type="text"
@@ -108,19 +111,13 @@ function LoginForm({ current }) {
         />
       </div>
 
-      <div
-        className={`mt-8 rounded-2xl p-5 ${demoColors[current.color]}`}
-      >
-        <span className="font-bold">
-          Demo:
-        </span>
+      <div className={`mt-8 rounded-2xl p-5 ${demoColors[current.color]}`}>
+        <span className="font-bold">Demo:</span>
 
         <span className="ml-2">
           Usa tu usuario y contraseña registrados en el sistema.
         </span>
-
       </div>
-
     </div>
   );
 }
