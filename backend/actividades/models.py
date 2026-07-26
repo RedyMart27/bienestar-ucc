@@ -56,7 +56,7 @@ class Actividad(models.Model):
         verbose_name = 'Horas ludicas que otorga'
     )
 
-    iamgen = models.ImageField(
+    imagen = models.ImageField(
         upload_to = 'actividades/',
         blank = True,
         null = True,
@@ -104,7 +104,7 @@ class Inscripcion(models.Model):
     """
 
     estudiante = models.ForeignKey(
-        'usuriaos.Usuario',
+        'usuarios.Usuario',
         on_delete = models.CASCADE,
         related_name = 'inscripciones',
         verbose_name = 'Estudiante'
@@ -177,3 +177,6 @@ class Participacion(models.Model):
 
     def __str__(self):
         return f'Participación de {self.inscripcion.estudiante} en {self.inscripcion.actividad}'
+
+
+
